@@ -45,7 +45,7 @@ def main():
         user_data={
             "Hours Studied":hours_studied,
             "Previous Scores":previous_score,
-            "Extracurricular Activities":extra[0],
+            "Extracurricular Activities":extra,
             "Sleep Hours":sleeping_hour,
             "Sample Question Papers Practiced":number_of_paper_solved
         }
@@ -53,7 +53,9 @@ def main():
         prediction=predict_data(user_data)
         st.success(f"your prediciotn result is {prediction}")
         user_data['prediction'] = round(float(prediction[0]),2)
+        user_data['Extracurricular Activities'] = 1 if user_data['Extracurricular Activities'] == 'Yes' else 0
         user_data = {key: int(value) if isinstance(value, np.integer) else float(value) if isinstance(value, np.floating) else value for key, value in user_data.items()}
+        user_data['Extracurricular Activities'] = 1 if user_data['Extracurricular Activities'] == 'Yes' else 0
         collection.insert_one(user_data)
 
     
