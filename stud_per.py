@@ -45,7 +45,7 @@ def main():
         user_data={
             "Hours Studied":hours_studied,
             "Previous Scores":previous_score,
-            "Extracurricular Activities":extra,
+            "Extracurricular Activities":extra[0],
             "Sleep Hours":sleeping_hour,
             "Sample Question Papers Practiced":number_of_paper_solved
         }
